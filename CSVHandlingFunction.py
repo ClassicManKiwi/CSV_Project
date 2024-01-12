@@ -48,3 +48,49 @@ def loopDiggingArray(files_list:list, col_target:int, row_target:int, arr_width:
     
     return int(file_count)
 
+#Function that will get Data from CSV file, Can choose to ignore header(first row) or not
+def getCSVData(file:os.path, header:bool):
+    header_data = []
+    data = []
+    row_iter = 0
+
+    with open(file,"r",encoding="utf-8-sig") as csv_file:
+        reader = csv.reader(csv_file)
+        for row in reader:
+            if row_iter == 0:
+                header_data.append(row)
+                row_iter += 1
+            else:
+                data.append(row)
+                row_iter += 1
+
+    if header == True:
+        return [*header_data, *data]
+    else:
+        return data
+    
+#Function that will merge CSV filesm Can choose to use first file header as a output header, otherwish every files header will be writen in output file
+def mergeCSV(files_list:list, merge_header:bool):
+    script_path = os.path.dirname(os.path.realpath(__file__))
+    file_count = 0
+
+    #looping get data from files using getCSVData function and write output files
+    with open(os.path.join(script_path,"CSVMerger Output.csv"),"w", newline= '') as output_file:
+        csv_writer = csv.writer(output_file)
+        for file in files_list:
+            if merge_header == True:
+                if file_count == 0:
+                    csv_writer.writerows(getCSVData(file,header=True))
+                    file_count += 1
+                else:
+                    csv_writer.writerows(getCSVData(file,header=False))
+                    file_count += 1
+            else:
+                csv_writer.writerows(getCSVData(file,header=True))
+                file_count += 1
+
+    return file_count
+
+
+
+  
