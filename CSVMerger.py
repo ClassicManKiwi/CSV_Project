@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import Button, Label, LabelFrame, Entry, filedialog, StringVar, messagebox, BooleanVar, Checkbutton
-import CSVHandlingFunction
+import csvhandling
 
 # region function
 #Folder browser function
@@ -14,8 +14,8 @@ def startMerging():
     name = str(file_name_entry.get())
     header = bool(merge_header.get())
     
-    file_list = CSVHandlingFunction.getCSVFilesPath(path, name)
-    file_count = CSVHandlingFunction.mergeCSV(file_list, header)
+    file_list = csvhandling.getCSVFilesPath(path, name)
+    file_count = csvhandling.mergeCSV(file_list, header)
 
     if file_count == 0:
         message_log = "Not found file that contain name = " + name

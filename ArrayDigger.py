@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import Button, Label, LabelFrame, Entry, filedialog, StringVar, messagebox
-import CSVHandlingFunction
+import csvhandling
 
 # region function
 #Folder browser function
@@ -16,8 +16,8 @@ def startDigging():
     width = int(arr_width_entry.get())
     height = int(arr_height_entry.get())
     
-    file_list = CSVHandlingFunction.getCSVFilesPath(path, name)
-    file_count = CSVHandlingFunction.loopDiggingArray(file_list, row, col, width, height)
+    file_list = csvhandling.getCSVFilesPath(path, name)
+    file_count = csvhandling.loopDiggingArray(file_list, row, col, width, height)
 
     if file_count == 0:
         message_log = "Not found file that contain name = " + name
