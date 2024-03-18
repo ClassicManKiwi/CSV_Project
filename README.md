@@ -5,7 +5,8 @@ Build in dist folder.
 
 ## CSV Array Digger
 Demo manual for CSV Array Digger.exe
-![image](https://github.com/ClassicManKiwi/CSV_Project/assets/154972755/62e09bc8-f597-4c42-8994-1fff83c1c806)
+![image](https://github.com/ClassicManKiwi/CSV_Project/assets/154972755/ab1c7aec-cc03-4e3b-ac8d-0efe9f17f3fd)
+
 
 
 ## CSV Merger
