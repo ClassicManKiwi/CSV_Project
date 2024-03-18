@@ -34,14 +34,14 @@ def getDataArray(file:os.path,col_target:int, row_target:int, arr_width:int, arr
     return data_arr
 
 #Function looping read array of data from files path list and write to Output CSV fil. return looping files.
-def loopDiggingArray(files_list:list, col_target:int, row_target:int, arr_width:int, arr_height:int):
-    script_path = os.path.dirname(os.path.realpath(__file__))
+def loopDiggingArray(files_list:list, path:os.path, col_target:int, row_target:int, arr_width:int, arr_height:int):
+    script_path = path
     file_count = 0
     #looping get data from files using getDataArray function and write output files
-    with open(os.path.join(script_path,"ArrayDigger Output.csv"),"w", newline= '') as output_file:
+    with open(os.path.join(path,"ArrayDigger Output.csv"),"w", newline= '') as output_file:
         csv_writer = csv.writer(output_file)
         for file in files_list:
-            datainfile = getDataArray(file, row_target, col_target, arr_width, arr_height)
+            datainfile = getDataArray(file, col_target, row_target, arr_width, arr_height)
             csv_writer.writerows(datainfile)
             file_count += 1
         output_file.close()
@@ -70,12 +70,12 @@ def getCSVData(file:os.path, header:bool):
         return data
     
 #Function that will merge CSV filesm Can choose to use first file header as a output header, otherwish every files header will be writen in output file
-def mergeCSV(files_list:list, merge_header:bool):
-    script_path = os.path.dirname(os.path.realpath(__file__))
+def mergeCSV(files_list:list, path:os.path, merge_header:bool):
+    script_path = path
     file_count = 0
 
     #looping get data from files using getCSVData function and write output files
-    with open(os.path.join(script_path,"CSVMerger Output.csv"),"w", newline= '') as output_file:
+    with open(os.path.join(path, "CSVMerger Output.csv"),"w", newline= '') as output_file:
         csv_writer = csv.writer(output_file)
         for file in files_list:
             if merge_header == True:
@@ -91,6 +91,3 @@ def mergeCSV(files_list:list, merge_header:bool):
 
     return file_count
 
-
-
-  

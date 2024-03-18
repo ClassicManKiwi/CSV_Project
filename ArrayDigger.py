@@ -17,7 +17,7 @@ def startDigging():
     height = int(arr_height_entry.get())
     
     file_list = csvhandling.getCSVFilesPath(path, name)
-    file_count = csvhandling.loopDiggingArray(file_list, row, col, width, height)
+    file_count = csvhandling.loopDiggingArray(file_list, path,col, row, width, height)
 
     if file_count == 0:
         message_log = "Not found file that contain name = " + name

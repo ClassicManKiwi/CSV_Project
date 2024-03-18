@@ -15,7 +15,7 @@ def startMerging():
     header = bool(merge_header.get())
     
     file_list = csvhandling.getCSVFilesPath(path, name)
-    file_count = csvhandling.mergeCSV(file_list, header)
+    file_count = csvhandling.mergeCSV(file_list, path, header)
 
     if file_count == 0:
         message_log = "Not found file that contain name = " + name
